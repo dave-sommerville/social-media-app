@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Dave Sommerville">
+  <meta name="description" content="Explore Unreal City - a hub for web development and design tips. Learn HTML, CSS, JavaScript, and more.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Fakebook</title>
+  <link rel="icon" href="./src/img/favicon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="./src/css/reset.css" media="all">
+  <link rel="stylesheet" href="./src/css/style.css" media="all">
+  <script src="./src/js/script.js" defer></script>
+</head>
+<body>
+  <header>
+		<div class="container flex header">
+    <h1>FAKEBOOK</h1>
+    <ul>
+      <li>Friends</li>
+			<li>Groups</li>
+			<li>Pages</li>
+    </ul>
+    <img src="./src//img/profile.jpg" alt="Profile Image" class="header-profile">
+		</div>
+  </header>
+  <main class="container flex f-col">
+		<section class="profile-modal flex f-col hide">
+			<img src="./src//img/profile.jpg" alt="Profile Img">
+			<h2 class="name"></h2>
+			<p class="username"></p>
+			</p>
+				<div class="info-item">
+					<label>Email:</label>
+					<p class="email"></p>
+				</div>
+				<div class="info-item">
+					<label>Groups Enrolled In:</label>
+					<ul class="groups">
+					</ul>
+				</div>
+				<div class="info-item">
+					<label>Pages Subscribed To:</label>
+					<ul class="pages">
+					</ul>
+				</div>	
+				<div class="info-item">
+					<p>Can Monetize:<span class="can-monetize"></span></p>
+				</div>
+		</section>
+    <section class="user-input">
+      <form class="flex">
+        <textarea 
+				type="text" 
+				placeholder="Share something" 
+				class="input-text"></textarea>
+      </form>
+			<div class="btn-wrapper flex">
+				<label for="image-input" class="image-icon">
+					<i class="fa-solid fa-image"></i> </label>
+				<span class="input-display"></span>
+				<input type="file" id="image-input" class="image-input" accept="image/*" />
+				<button class="post-btn">SHARE</button>
+			</div>
+    </section>
+    <section class="newsfeed">
+
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/*------------------------------------------------------------------------->
+  Default Control and Roots 
+<-------------------------------------------------------------------------*/
+
+html {
+  font-family: "Poppins", "Inter", Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+	list-style-type: none;
+}
+
+input, button {
+  all: unset;
+}
+
+:root {
+  --app-bg-color: #020209;
+	--app-text-color: #fefefe;
+	--app-primary-color: #234;
+	--app-secondary-color: #123;
+	--app-input-bg: #012;
+	--app-text-size: 1.4rem;
+  --app-btn-color: #d12;
+  --app-border-rad: 6px;
+	--app-section-width: 800px;
+}
+
+/*------------------------------------------------------------------------->
+  Utility Classes
+<-------------------------------------------------------------------------*/
+
+.container {
+  width: min(100% - 30px, 1200px);
+  margin-inline: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.f-col {
+  flex-direction: column;
+}
+
+.hide {
+	display: none;
+}
+
+/*------------------------------------------------------------------------->
+  Base Structure
+<-------------------------------------------------------------------------*/
+
+body {
+  background-color: var(--app-bg-color);
+}
+
+main {
+  max-width: var(--app-section-width);
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+/*------------------------------------------------------------------------->
+  Text Styling
+<-------------------------------------------------------------------------*/
+
+h1 {
+  font-size: 2.5rem;	
+	color: var(--app-text-color);									
+}
+
+h2 {
+	font-size: 2rem;
+  color: var(--app-text-color);
+	text-align: center;									
+}
+
+p {
+	font-size: var(--app-text-size);
+	color: var(--app-text-color);
+}
+
+/*------------------------------------------------------------------------->
+  Header
+<-------------------------------------------------------------------------*/
+
+.header{
+	height: 80px;
+	align-items: center;
+  justify-content: space-between; 
+  padding: 10px;
+	line-height: 80px;
+}
+
+header {
+	max-width: 100svw;
+	height: 80px;
+  background-color: var(--app-secondary-color);
+
+	ul {
+  display: flex;
+  justify-content: center; 
+}
+
+	li {
+		font-size: var(--app-text-size);
+		color: var(--app-text-color);
+	}
+}
+
+.header-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/*------------------------------------------------------------------------->
+  User Input
+<-------------------------------------------------------------------------*/
+
+.user-input {
+  height: fit-content;
+  width: 100%;
+  border-radius: var(--app-border-rad);
+  background-color: var(--app-bg-color);
+	margin-top: 25px;
+}
+
+.input-text {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+	outline: none;
+	font-size: var(--app-text-size);
+	color: var(--app-text-color);
+  border-radius: var(--app-border-rad);
+  background-color: var(--app-input-bg);
+	border: 1px solid var(--app-post-color);
+	resize: none;
+  white-space: pre-wrap;
+	overflow: hidden;
+}
+
+.btn-wrapper {
+  justify-content: space-between;
+  margin: 20px 50px 10px 50px;
+
+	i {
+		color: var(--app-btn-color);
+		font-size: 1.6rem;									
+		height: 40px;
+		line-height: 40px;
+	}
+}
+
+.input-display {
+	color: var(--app-text-color);
+}
+button {
+	font-size: 1.2rem;
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: var(--app-border-rad);
+  background-color: var(--app-btn-color);
+  color: var(--app-text-color);
+}
+
+/*------------------------------------------------------------------------->
+  Newsfeed
+<-------------------------------------------------------------------------*/
+
+
+input[type="file"] {
+  display: none;
+}  
+
+.newsfeed {
+	width: 100%;
+  margin-top: 25px;
+}
+
+.post-wrapper {
+	width: 800px;
+	height: fit-content;
+  background-color: var(--app-secondary-color);
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: var(--app-border-rad);
+}
+
+.post-text{
+	margin: 25px;
+	font-size: var(--app-text-size);
+	color: var(--app-text-color);
+}
+
+.post-image {
+	width: 600px;
+	height: auto;
+	border-radius: var(--app-border-rad);
+	margin: 15px 75px;
+}
+
+.heading-wrapper {
+	display: flex;
+	color: var(--app-text-color);
+
+	img {
+		height: 30px;
+		width: 30px;
+		border-radius: 50%;
+	}
+	span {
+		font-size: var(--app-text-size);											
+		line-height: 30px;
+		margin: 0 5svw 0 10px; 
+		height: 30px;
+	}
+	p {
+		height: 30px;
+		line-height: 30px;
+		text-align: justify;
+		margin-left: 5px;
+		flex: 1;
+		font-size: var(--app-text-size);									
+	}
+}
+
+/*------------------------------------------------------------------------->
+  Module
+<-------------------------------------------------------------------------*/
+
+.profile-modal {
+	width: 600px;
+  background: var(--app-primary-color);
+  border-radius: var(--app-border-rad);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+	position: fixed;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+	label {
+		font-size: var(--app-text-size);
+		color: var(--app-text-color);
+	}
+
+	p {
+		font-size: var(--app-text-size);
+		color: var(--app-text-color);
+	}
+
+	img { 
+		border-radius: 50%;
+		height: 200px;
+		width: 200px;
+		margin: 5px auto;
+	}
+}
+
+
+.username {
+	text-align: center;
+}
+
+.social-icons {
+	height: 50px;
+	line-height: 50px;
+}
+
+.can-monetize {
+	font-size: var(--app-text-size);
+}
+.user-info {
+  margin-top: 10px;
+}
+
+.info-item {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--app-text-color);
+}
+
+ul li {
+	color: var(--app-text-color);
+  padding-left: 1rem;
+  position: relative;
+}
+
+
