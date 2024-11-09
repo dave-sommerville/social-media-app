@@ -1,5 +1,5 @@
 
-# Wink: My first social media site
+# FAKEBOOK: My first social media site
 This is bar far my most ambitious web development project so far. It's also been the most fun. I've had to work through numerous challenges, but a great deal of my time on this project was spent developing structure. The project originally called for the classes of User and Subscriber, I decided to create the class Post as well. I think this will help me with some future planned adjustments. I see that class creation is no joke, however. As it takes up more than half my js. I also chose to use getter and setter methods instead of the get and set keywords simply to help myself stay organized. I also got to discover the joy (and anguish) of debugging repeatedly, which in itself is good practice. 
 ## Features
 - User generated posts
