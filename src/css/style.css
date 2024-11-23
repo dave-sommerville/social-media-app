@@ -18,6 +18,11 @@ input, button {
   all: unset;
 }
 
+/*
+Needing to consider how to arrange and activate the different theme preferences
+
+*/
+
 :root {
   --app-bg-color: #020209;
 	--app-text-color: #fefefe;
@@ -300,4 +305,45 @@ ul li {
   position: relative;
 }
 
+/*
+.radio-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
 
+label {
+  display: block;
+  text-align: center;
+}
+
+ Input style, showing which colour display has been chosen 
+input[type="radio"] {
+  display: none; 
+}
+
+input[type="radio"]:checked + .color-display {
+  border: 0.6px solid var(--clr-accent-1); 
+}
+
+/* Colour samples themselves used as inputs to be selected 
+.color-display {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+	cursor: pointer;
+}
+
+.one {
+	background-color: var(--clr-blue);
+}
+.two {
+	background-color: var(--clr-orange);
+}
+.three {
+	background-color: var(--clr-green);
+}
+*/

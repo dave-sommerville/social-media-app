@@ -78,7 +78,26 @@ let uploadedImage = null;
 /*------------------------------------------------------------------------->
   Class Construction 
 <-------------------------------------------------------------------------*/
-
+/*
+-- For selecting The current user
+radioButtons.forEach((radio) => {
+  listen("change", radio, () => {
+    switch (radio.value) {
+      case "1":
+        targetShape.style.backgroundColor = "var(--clr-blue)";
+        break;
+      case "2":
+        targetShape.style.backgroundColor = "var(--clr-orange)";
+        break;
+      case "3":
+        targetShape.style.backgroundColor = "var(--clr-green)";
+        break;
+      default:
+        targetShape.style.backgroundColor = "transparent"; 
+    }
+  });
+});
+ */
 class User {
   #id;
   #firstName;
@@ -182,11 +201,11 @@ class Subscriber extends User {
 
     this.setGroups(groups);
     this.setPages(pages);
-    this.setCanMonetize(canMonetize);
+    this.setCanMonetize(canMonetize); // Change to Verified, will add green dot
   }
   isValidEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  
-    return emailRegex.test(email);
+    return emailRegex.test(email); //Unneeded (I think)
   }
 
   setGroups(groups) {
@@ -207,7 +226,7 @@ class Subscriber extends User {
     }
     this.#pages = pages;
   }
-  setCanMonetize(canMonetize) {
+  setCanMonetize(canMonetize) { //see above
     if (typeof canMonetize !== 'boolean') {
       throw new Error('Can monetize must be a boolean value.');
     }
@@ -235,25 +254,22 @@ class Subscriber extends User {
   }
 }
 
-class Post extends User {
+class Post {
   #postId;
+  #user;  // Store User instance
   #p;
   #img;
   #date;
 
   constructor(user, p, img) {
-    super(
-      user.getId(), 
-      user.getFirstName(), 
-      user.getLastName(), 
-			user.getUserName(),
-      user.getEmail(), 
-      user.getProfilePic()
-    );
+    if (!(user instanceof User)) {
+      throw new Error("Post must be associated with a valid User instance.");
+    }
+    this.#user = user; // Associate User instance
     this.setPostId();
     this.setP(p);
     this.setImg(img);
-    this.setDate(); 
+    this.setDate();
   }
 
   setPostId() {
@@ -275,6 +291,9 @@ class Post extends User {
     this.#date = new Date();
   }
 
+  getUser() {
+    return this.#user;
+  }
   getDate() {
     return this.#date;
   }
@@ -306,25 +325,29 @@ function handleImageSelect(ev) {
 }
 
 function createHeading(postObj) {
+  const userObj = postObj.getUser(); // Get User instance
   let headingWrapper = create('div');
   addClass(headingWrapper, 'heading-wrapper');
 
-  let avatar = createImage(postObj.getProfilePic());
+  let avatar = createImage(userObj.getProfilePic());
   headingWrapper.appendChild(avatar);
 
   let fullName = create('p');
-  fullName.textContent = `${postObj.getFirstName()} ${postObj.getLastName()}`;
+  fullName.textContent = userObj.getFullName();
   headingWrapper.appendChild(fullName);
 
   let dateStamp = create('span');
-  dateStamp.textContent = postObj.getDate().toLocaleDateString('en-GB', 
-    { day: 'numeric', month: 'long' }
-  );
+  dateStamp.textContent = postObj.getDate().toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+  });
   headingWrapper.appendChild(dateStamp);
 
   return headingWrapper;
 }
 
+// Will have to create a "currentUser" variable and create three 
+// userObj that can fill that variable depending upon which is selected
 const userOne = new User(
   'AB1234', 
   'Dave', 
@@ -341,10 +364,10 @@ const subscriberOne = new Subscriber(
 	true
 );
 
-function createPost(postObj) {
+function createPost(userObj, postObj) {
   let postWrapper = create('div');
   addClass(postWrapper, 'post-wrapper');
-  let heading = createHeading(postObj);
+  let heading = createHeading(userObj);
   postWrapper.appendChild(heading);
 
   if (postObj.getP() !== '') {
@@ -373,19 +396,18 @@ function postButtonClick() {
 
   try {
     const newPostObj = new Post(
-      userOne,
-      trimmedText,  
-      uploadedImage ? URL.createObjectURL(uploadedImage) : ''  
+      subscriberOne, // Use the current user instance
+      trimmedText,
+      uploadedImage ? URL.createObjectURL(uploadedImage) : ''
     );
 
     postsDatabase.unshift(newPostObj);
     renderPosts();
 
-		postTextArea.value = '';
+    postTextArea.value = '';
     uploadedImage = null;
-    imageInput.value = ''; 
-    inputDisplay.textContent = '';  
-
+    imageInput.value = '';
+    inputDisplay.textContent = '';
   } catch (error) {
     console.error("Error creating post:", error);
   }
@@ -394,10 +416,18 @@ function postButtonClick() {
 
 function renderPosts() {
   newsfeed.innerHTML = '';
-  postsDatabase.sort((a, b) => b.getDate() - a.getDate()); 
-  postsDatabase.forEach(createPost);
+  postsDatabase.sort((a, b) => b.getDate() - a.getDate());
+  postsDatabase.forEach((post) => {
+    createPost(post.getUser(), post); // Pass user and post to `createPost`
+  });
 }
 
+/*			This is where I need the other users to be input		*/
+
+
+
+//	This is my modal information. Besides needed the profile picture
+//	to come from here, I think I want to change the css entirely
 function populateUserInfo(subscriber) {
   const userInfo = subscriber.getInfo(); 
 
