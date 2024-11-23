@@ -1,7 +1,7 @@
 'use strict';
 
-/*------------------------------------------------------------------------->
-  Utility Functions 
+/*------------------------------------------------------------------------->  
+  Utility Functions  
 <-------------------------------------------------------------------------*/
 
 function select(selector, scope = document) {
@@ -37,22 +37,22 @@ function assignId(element) {
 
 function createImage(imageSrc) {
   const img = document.createElement('img');
-  img.src = imageSrc;  
-  img.alt = imageSrc; // Because the photo could be anything 
+  img.src = imageSrc;
+  img.alt = imageSrc; // Because the photo could be anything
   return img;
 }
 
 function create(element) {
-  const newElement = document.createElement(element); 
+  const newElement = document.createElement(element);
   return newElement;
 }
 
 function addText(element, text) {
-  element.textContent = text; 
+  element.textContent = text;
 }
 
-/*------------------------------------------------------------------------->
-  Initial Declarations 
+/*------------------------------------------------------------------------->  
+  Initial Declarations  
 <-------------------------------------------------------------------------*/
 
 const userInput = select('.user-input');
@@ -60,44 +60,26 @@ const imageButton = select('.image-btn');
 const postButton = select('.post-btn');
 const imgInput = select('#image-input');
 const newsfeed = select('.newsfeed');
-const postTextArea = select('.input-text');  
+const postTextArea = select('.input-text');
 const imageInput = select('#image-input');
 const inputDisplay = select('.input-display');
 const profileModal = select('.profile-modal');
 const modalName = select('.name');
-const modalUserName = select('.username')
+const modalUserName = select('.username');
 const modalEmail = select('.email');
 const modalGroups = select('.groups');
 const modalPages = select('.pages');
 const modalCanMonetize = select('.can-monetize');
 const modalButton = select('.header-profile');
+const switchUserButton = select('.switch-user-btn'); // New user-switching button
 
-const postsDatabase = []; 
+const postsDatabase = [];
 let uploadedImage = null;
 
-/*------------------------------------------------------------------------->
-  Class Construction 
+/*------------------------------------------------------------------------->  
+  Class Construction  
 <-------------------------------------------------------------------------*/
-/*
--- For selecting The current user
-radioButtons.forEach((radio) => {
-  listen("change", radio, () => {
-    switch (radio.value) {
-      case "1":
-        targetShape.style.backgroundColor = "var(--clr-blue)";
-        break;
-      case "2":
-        targetShape.style.backgroundColor = "var(--clr-orange)";
-        break;
-      case "3":
-        targetShape.style.backgroundColor = "var(--clr-green)";
-        break;
-      default:
-        targetShape.style.backgroundColor = "transparent"; 
-    }
-  });
-});
- */
+
 class User {
   #id;
   #firstName;
@@ -106,14 +88,14 @@ class User {
   #email;
   #profilePic;
 
-	constructor(id, firstName, lastName, userName, email, profilePic) {
-		this.setId(id);
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setUserName(userName); 
-		this.setEmail(email);
-		this.setProfilePic(profilePic);
-	}	
+  constructor(id, firstName, lastName, userName, email, profilePic) {
+    this.setId(id);
+    this.setFirstName(firstName);
+    this.setLastName(lastName);
+    this.setUserName(userName);
+    this.setEmail(email);
+    this.setProfilePic(profilePic);
+  }
 
   setId(id) {
     if (typeof id !== 'string' || id.trim() === '') {
@@ -140,18 +122,18 @@ class User {
     }
     this.#lastName = lastName;
   }
-	setEmail(email) {
-		const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  
-		if (typeof email !== 'string' || !emailRegex.test(email)) {
-			throw new Error('Invalid email format.');
-		}
-		this.#email = email;
-	}
+  setEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (typeof email !== 'string' || !emailRegex.test(email)) {
+      throw new Error('Invalid email format.');
+    }
+    this.#email = email;
+  }
   setProfilePic(profilePic) {
     if (profilePic && typeof profilePic !== 'string') {
       throw new Error('Profile picture must be a string URL or empty.');
     }
-    this.#profilePic = profilePic || ''; 
+    this.#profilePic = profilePic || '';
   }
 
   getFirstName() {
@@ -184,7 +166,7 @@ class Subscriber extends User {
 
   constructor(user, groups, pages, canMonetize) {
     if (!(user instanceof User)) {
-      throw new Error("The provided user must be an instance of User.");
+      throw new Error('The provided user must be an instance of User.');
     }
     super(
       user.getId(),
@@ -195,24 +177,16 @@ class Subscriber extends User {
       user.getProfilePic()
     );
 
-    if (!this.isValidEmail(user.getEmail())) {
-      throw new Error("Invalid email format.");
-    }
-
     this.setGroups(groups);
     this.setPages(pages);
-    this.setCanMonetize(canMonetize); // Change to Verified, will add green dot
-  }
-  isValidEmail(email) {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  
-    return emailRegex.test(email); //Unneeded (I think)
+    this.setCanMonetize(canMonetize);
   }
 
   setGroups(groups) {
     if (!Array.isArray(groups)) {
       throw new Error('Groups must be an array.');
     }
-    if (groups.some(group => typeof group !== 'string' || group.trim() === '')) {
+    if (groups.some((group) => typeof group !== 'string' || group.trim() === '')) {
       throw new Error('Each group name must be a non-empty string.');
     }
     this.#groups = groups;
@@ -221,12 +195,12 @@ class Subscriber extends User {
     if (!Array.isArray(pages)) {
       throw new Error('Pages must be an array.');
     }
-    if (pages.some(page => typeof page !== 'string' || page.trim() === '')) {
+    if (pages.some((page) => typeof page !== 'string' || page.trim() === '')) {
       throw new Error('Each page name must be a non-empty string.');
     }
     this.#pages = pages;
   }
-  setCanMonetize(canMonetize) { //see above
+  setCanMonetize(canMonetize) {
     if (typeof canMonetize !== 'boolean') {
       throw new Error('Can monetize must be a boolean value.');
     }
@@ -249,23 +223,23 @@ class Subscriber extends User {
       email: this.getEmail(),
       groups: this.getGroups(),
       pages: this.getPages(),
-      canMonetize: this.getCanMonetize()
+      canMonetize: this.getCanMonetize(),
     };
   }
 }
 
 class Post {
   #postId;
-  #user;  // Store User instance
   #p;
   #img;
   #date;
+  #user;
 
   constructor(user, p, img) {
     if (!(user instanceof User)) {
-      throw new Error("Post must be associated with a valid User instance.");
+      throw new Error('The user must be an instance of User.');
     }
-    this.#user = user; // Associate User instance
+    this.#user = user;
     this.setPostId();
     this.setP(p);
     this.setImg(img);
@@ -291,9 +265,6 @@ class Post {
     this.#date = new Date();
   }
 
-  getUser() {
-    return this.#user;
-  }
   getDate() {
     return this.#date;
   }
@@ -306,26 +277,28 @@ class Post {
   getImg() {
     return this.#img;
   }
+  getUser() {
+    return this.#user;
+  }
 }
 
-/*------------------------------------------------------------------------->
-  Specialty Functions 
+/*------------------------------------------------------------------------->  
+  Specialty Functions  
 <-------------------------------------------------------------------------*/
 
 function handleImageSelect(ev) {
-  const file = ev.target.files[0];  
+  const file = ev.target.files[0];
 
   if (file && isImageFile(file)) {
     uploadedImage = file;
-    inputDisplay.textContent = file.name;  
+    inputDisplay.textContent = file.name;
   } else {
     uploadedImage = null;
     inputDisplay.textContent = '';
   }
 }
 
-function createHeading(postObj) {
-  const userObj = postObj.getUser(); // Get User instance
+function createHeading(userObj) {
   let headingWrapper = create('div');
   addClass(headingWrapper, 'heading-wrapper');
 
@@ -333,11 +306,11 @@ function createHeading(postObj) {
   headingWrapper.appendChild(avatar);
 
   let fullName = create('p');
-  fullName.textContent = userObj.getFullName();
+  fullName.textContent = `${userObj.getFirstName()} ${userObj.getLastName()}`;
   headingWrapper.appendChild(fullName);
 
   let dateStamp = create('span');
-  dateStamp.textContent = postObj.getDate().toLocaleDateString('en-GB', {
+  dateStamp.textContent = new Date().toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
   });
@@ -346,44 +319,63 @@ function createHeading(postObj) {
   return headingWrapper;
 }
 
-// Will have to create a "currentUser" variable and create three 
-// userObj that can fill that variable depending upon which is selected
 const userOne = new User(
-  'AB1234', 
-  'Dave', 
-  'Sommerville', 
-	'@thatdaveguy22',
-  'dave.r.sommerville@outlook.com', 
+  'AB1234',
+  'Dave',
+  'Sommerville',
+  '@thatdaveguy22',
+  'dave.r.sommerville@outlook.com',
   './src/img/profile.jpg'
 );
 
-const subscriberOne = new Subscriber(
-	userOne, 
-	['Tech Talk', 'Creative Corner', 'Dev Support'], 
-	['Daily Funnies', 'Space Facts', 'News Now'], 
-	true
+const userTwo = new User(
+  'CD5678',
+  'Jane',
+  'Doe',
+  '@janedoe',
+  'jane.doe@domain.com',
+  './src/img/profile2.jpg'
 );
 
+let currentUser = userOne;
+
+function populateUserInfo(user) {
+  modalName.textContent = user.getFullName();
+  modalUserName.textContent = user.getUserName();
+  modalEmail.textContent = user.getEmail();
+  modalGroups.textContent = user.getGroups().join(', ');
+  modalPages.textContent = user.getPages().join(', ');
+  modalCanMonetize.textContent = user.getCanMonetize() ? 'Yes' : 'No';
+}
+
+function switchUser(user) {
+  currentUser = user;
+  populateUserInfo(currentUser);
+  renderPosts();
+}
+
 function createPost(userObj, postObj) {
-  let postWrapper = create('div');
-  addClass(postWrapper, 'post-wrapper');
-  let heading = createHeading(userObj);
-  postWrapper.appendChild(heading);
+  let post = create('div');
+  addClass(post, 'post-wrapper');
+  let postHeading = createHeading(userObj);
+  post.appendChild(postHeading);
 
-  if (postObj.getP() !== '') {
-    let postText = create('p');
-    postText.textContent = postObj.getP();
-    postWrapper.appendChild(postText);
-    addClass(postText, 'post-text')
+  let content = create('p');
+  content.textContent = postObj.getP();
+  post.appendChild(content);
+
+  if (postObj.getImg()) {
+    let postImage = createImage(postObj.getImg());
+    post.appendChild(postImage);
   }
 
-  if (postObj.getImg() !== '') {
-    let postImg = createImage(postObj.getImg());
-    postWrapper.appendChild(postImg);
-    addClass(postImg, 'post-image')
-  }
+  newsfeed.appendChild(post);
+}
 
-  newsfeed.appendChild(postWrapper);
+function renderPosts() {
+  newsfeed.innerHTML = '';
+  postsDatabase.sort((a, b) => b.getDate() - a.getDate());
+  postsDatabase.forEach((post) => createPost(currentUser, post)); // Pass currentUser
 }
 
 function postButtonClick() {
@@ -396,7 +388,7 @@ function postButtonClick() {
 
   try {
     const newPostObj = new Post(
-      subscriberOne, // Use the current user instance
+      currentUser, // Pass currentUser here
       trimmedText,
       uploadedImage ? URL.createObjectURL(uploadedImage) : ''
     );
@@ -413,69 +405,12 @@ function postButtonClick() {
   }
 }
 
-
-function renderPosts() {
-  newsfeed.innerHTML = '';
-  postsDatabase.sort((a, b) => b.getDate() - a.getDate());
-  postsDatabase.forEach((post) => {
-    createPost(post.getUser(), post); // Pass user and post to `createPost`
-  });
-}
-
-/*			This is where I need the other users to be input		*/
-
-
-
-//	This is my modal information. Besides needed the profile picture
-//	to come from here, I think I want to change the css entirely
-function populateUserInfo(subscriber) {
-  const userInfo = subscriber.getInfo(); 
-
-  modalName.textContent = userInfo.fullName;
-  modalUserName.textContent = userInfo.userName;
-  modalEmail.textContent = userInfo.email;
-  
-  const groupsList = modalGroups;
-  groupsList.innerHTML = ''; 
-  userInfo.groups.forEach(group => {
-    const li = create('li');
-    li.textContent = group;
-    groupsList.appendChild(li);
-  });
-
-  const pagesList = modalPages;
-  pagesList.innerHTML = '';
-  userInfo.pages.forEach(page => {
-    const li = create('li');
-    li.textContent = page;
-    pagesList.appendChild(li);
-  });
-
-  modalCanMonetize.textContent = userInfo.canMonetize ? 'Yes' : 'No';
-}
-
-populateUserInfo(subscriberOne);
-
-function hideModal() {
-	profileModal.classList.add('hide');
-}
-
-function displayModal() {
-	profileModal.classList.remove('hide');
-}
-
-/*------------------------------------------------------------------------->
-  Conditional Observers 
+/*------------------------------------------------------------------------->  
+  Event Listeners  
 <-------------------------------------------------------------------------*/
 
-listen('change', imageInput, handleImageSelect);
 listen('click', postButton, postButtonClick);
-listen('click', modalButton, (event) => {
-  displayModal();
-  event.stopPropagation(); 
-});
-listen('click', document, (event) => {
-  if (!profileModal.contains(event.target)) {
-    hideModal();
-  }
-});
+listen('change', imgInput, handleImageSelect);
+
+// Switch user functionality
+listen('click', switchUserButton, () => switchUser(userTwo));
