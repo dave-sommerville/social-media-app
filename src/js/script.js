@@ -69,6 +69,7 @@ const postTextArea = select('.input-text');
 const imageInput = select('#image-input');
 const inputDisplay = select('.input-display');
 const profileModal = select('.profile-modal');
+const avatarModal = select('.profile-pic');
 const modalName = select('.name');
 const modalUserName = select('.username');
 const modalEmail = select('.email');
@@ -238,7 +239,7 @@ class Subscriber extends User {
   }
 }
 /*------------------------------------------------------------------------->  
-  Class Construction - POSST
+  Class Construction - POST
 <-------------------------------------------------------------------------*/
 
 class Post {
@@ -311,8 +312,6 @@ function handleImageSelect(ev) {
   }
 }
 
-
-
 /*------------------------------------------------------------------------->  
   Initialize users and subscribers (for profile) 
 <-------------------------------------------------------------------------*/
@@ -324,7 +323,7 @@ const userOne = new Subscriber(
     'Sommerville',
     '@thatdaveguy22',
     'dave.r.sommerville@outlook.com',
-    './src/img/profile.jpg'
+    './src/img/profile-01.png'
   ),
   ['Tech', 'Gaming'],  
   ['MyPage1', 'MyPage2'],  
@@ -338,7 +337,7 @@ const userTwo = new Subscriber(
     'Doe',
     '@janedoe',
     'jane.doe@domain.com',
-    './src/img/profile2.jpg'
+    './src/img/profile-02.png'
   ),
   ['Art', 'Music'],   
   ['MyPageA', 'MyPageB'],  
@@ -358,6 +357,7 @@ function populateUserInfo(user) {
   modalGroups.textContent = user.getGroups().join(', ');
   modalPages.textContent = user.getPages().join(', ');
   modalCanMonetize.textContent = user.getCanMonetize() ? 'Yes' : 'No';
+	avatarModal.src = user.getProfilePic();
 }
 
 function switchUser(user) {

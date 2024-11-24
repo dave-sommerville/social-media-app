@@ -101,39 +101,9 @@ p {
 }
 
 /*------------------------------------------------------------------------->
-  Header
+  Header	-		Will be removed in lieu of sidebar 
+	-- Except for mobile, which will have a header w/ hamburger icon
 <-------------------------------------------------------------------------*/
-
-.header{
-	height: 80px;
-	align-items: center;
-  justify-content: space-between; 
-  padding: 10px;
-	line-height: 80px;
-}
-
-header {
-	max-width: 100svw;
-	height: 80px;
-  background-color: var(--app-secondary-color);
-
-	ul {
-  display: flex;
-  justify-content: center; 
-}
-
-	li {
-		font-size: var(--app-text-size);
-		color: var(--app-text-color);
-	}
-}
-
-.header-profile {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
 
 /*------------------------------------------------------------------------->
   User Input
@@ -188,14 +158,13 @@ button {
   color: var(--app-text-color);
 }
 
-/*------------------------------------------------------------------------->
-  Newsfeed
-<-------------------------------------------------------------------------*/
-
-
 input[type="file"] {
   display: none;
 }  
+
+/*------------------------------------------------------------------------->
+  Newsfeed
+<-------------------------------------------------------------------------*/
 
 .newsfeed {
 	width: 100%;
@@ -254,7 +223,7 @@ input[type="file"] {
 <-------------------------------------------------------------------------*/
 
 .profile-modal {
-	width: 300px;
+	width: 450px;
 	height: 100vh;
 	background-color: #2c3e50;
   padding: 20px;
@@ -347,8 +316,6 @@ ul li {
 .email:hover {
 	text-decoration: underline;
 }
-
-
 
 .followed-pages a:hover {
 	text-decoration: underline;
