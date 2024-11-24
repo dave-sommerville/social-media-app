@@ -1,4 +1,9 @@
 'use strict';
+//	Switching is currently changing for all posts
+//	Images need to be fixed
+//	Switch button to be made into a radio button inside nav
+//	Hamburger icon for responsive design
+
 
 /*------------------------------------------------------------------------->  
   Utility Functions  
@@ -71,13 +76,13 @@ const modalGroups = select('.groups');
 const modalPages = select('.pages');
 const modalCanMonetize = select('.can-monetize');
 const modalButton = select('.header-profile');
-const switchUserButton = select('.switch-user-btn'); // New user-switching button
+const switchUserButton = select('.switch-user-btn'); // Switch user button
 
 const postsDatabase = [];
 let uploadedImage = null;
 
 /*------------------------------------------------------------------------->  
-  Class Construction  
+  Class Construction - USER
 <-------------------------------------------------------------------------*/
 
 class User {
@@ -159,6 +164,11 @@ class User {
   }
 }
 
+/*------------------------------------------------------------------------->  
+  Class Construction - SUBSCRIBER (EXTENDS USER)
+<-------------------------------------------------------------------------*/
+
+
 class Subscriber extends User {
   #groups;
   #pages;
@@ -227,18 +237,21 @@ class Subscriber extends User {
     };
   }
 }
+/*------------------------------------------------------------------------->  
+  Class Construction - POSST
+<-------------------------------------------------------------------------*/
 
 class Post {
   #postId;
   #p;
   #img;
   #date;
-  #user;
+  #user; //To track each users posts 
 
   constructor(user, p, img) {
     if (!(user instanceof User)) {
       throw new Error('The user must be an instance of User.');
-    }
+    } // To ensure we are using a User object
     this.#user = user;
     this.setPostId();
     this.setP(p);
@@ -283,7 +296,7 @@ class Post {
 }
 
 /*------------------------------------------------------------------------->  
-  Specialty Functions  
+  Image Staging  
 <-------------------------------------------------------------------------*/
 
 function handleImageSelect(ev) {
@@ -298,6 +311,66 @@ function handleImageSelect(ev) {
   }
 }
 
+
+
+/*------------------------------------------------------------------------->  
+  Initialize users and subscribers (for profile) 
+<-------------------------------------------------------------------------*/
+
+const userOne = new Subscriber(
+  new User(
+    'AB1234',
+    'Dave',
+    'Sommerville',
+    '@thatdaveguy22',
+    'dave.r.sommerville@outlook.com',
+    './src/img/profile.jpg'
+  ),
+  ['Tech', 'Gaming'],  
+  ['MyPage1', 'MyPage2'],  
+  true 
+);
+
+const userTwo = new Subscriber(
+  new User(
+    'CD5678',
+    'Jane',
+    'Doe',
+    '@janedoe',
+    'jane.doe@domain.com',
+    './src/img/profile2.jpg'
+  ),
+  ['Art', 'Music'],   
+  ['MyPageA', 'MyPageB'],  
+  false  
+);
+
+let currentUser = userOne;
+
+/*------------------------------------------------------------------------->  
+	Profile Display
+<-------------------------------------------------------------------------*/
+
+function populateUserInfo(user) {
+  modalName.textContent = user.getFullName();
+  modalUserName.textContent = user.getUserName();
+  modalEmail.textContent = user.getEmail();
+  modalGroups.textContent = user.getGroups().join(', ');
+  modalPages.textContent = user.getPages().join(', ');
+  modalCanMonetize.textContent = user.getCanMonetize() ? 'Yes' : 'No';
+}
+
+function switchUser(user) {
+  currentUser = user;
+  populateUserInfo(currentUser);
+  renderPosts();
+}
+
+/*------------------------------------------------------------------------->  
+  Create Post  
+<-------------------------------------------------------------------------*/
+
+//	HEADING
 function createHeading(userObj) {
   let headingWrapper = create('div');
   addClass(headingWrapper, 'heading-wrapper');
@@ -319,41 +392,7 @@ function createHeading(userObj) {
   return headingWrapper;
 }
 
-const userOne = new User(
-  'AB1234',
-  'Dave',
-  'Sommerville',
-  '@thatdaveguy22',
-  'dave.r.sommerville@outlook.com',
-  './src/img/profile.jpg'
-);
-
-const userTwo = new User(
-  'CD5678',
-  'Jane',
-  'Doe',
-  '@janedoe',
-  'jane.doe@domain.com',
-  './src/img/profile2.jpg'
-);
-
-let currentUser = userOne;
-
-function populateUserInfo(user) {
-  modalName.textContent = user.getFullName();
-  modalUserName.textContent = user.getUserName();
-  modalEmail.textContent = user.getEmail();
-  modalGroups.textContent = user.getGroups().join(', ');
-  modalPages.textContent = user.getPages().join(', ');
-  modalCanMonetize.textContent = user.getCanMonetize() ? 'Yes' : 'No';
-}
-
-function switchUser(user) {
-  currentUser = user;
-  populateUserInfo(currentUser);
-  renderPosts();
-}
-
+//	POST OBJECT
 function createPost(userObj, postObj) {
   let post = create('div');
   addClass(post, 'post-wrapper');
@@ -372,12 +411,14 @@ function createPost(userObj, postObj) {
   newsfeed.appendChild(post);
 }
 
+//	POST RENDERING (FROM ARRAY)
 function renderPosts() {
   newsfeed.innerHTML = '';
   postsDatabase.sort((a, b) => b.getDate() - a.getDate());
   postsDatabase.forEach((post) => createPost(currentUser, post)); // Pass currentUser
 }
 
+//	CREATE FUNCTIONS TRIGGER SET
 function postButtonClick() {
   const trimmedText = postTextArea.value.trim();
   if (trimmedText === '' && !uploadedImage) {
@@ -412,5 +453,6 @@ function postButtonClick() {
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
 
-// Switch user functionality
 listen('click', switchUserButton, () => switchUser(userTwo));
+
+listen('click', modalButton, () => populateUserInfo(currentUser));
