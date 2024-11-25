@@ -352,9 +352,28 @@ function populateUserInfo(user) {
   modalName.textContent = user.getFullName();
   modalUserName.textContent = user.getUserName();
   modalEmail.textContent = user.getEmail();
-  modalGroups.textContent = user.getGroups().join(', ');
-  modalPages.textContent = user.getPages().join(', ');
-	avatarModal.src = user.getProfilePic();
+
+  // Populate Groups as a list
+  modalGroups.innerHTML = ''; // Clear any previous content
+  const groupsList = document.createElement('ul');
+  user.getGroups().forEach((group) => {
+    const li = document.createElement('li');
+    li.textContent = group;
+    groupsList.appendChild(li);
+  });
+  modalGroups.appendChild(groupsList);
+
+  // Populate Pages as a list
+  modalPages.innerHTML = ''; // Clear any previous content
+  const pagesList = document.createElement('ul');
+  user.getPages().forEach((page) => {
+    const li = document.createElement('li');
+    li.textContent = page;
+    pagesList.appendChild(li);
+  });
+  modalPages.appendChild(pagesList);
+
+  avatarModal.src = user.getProfilePic();
 }
 
 function switchUser(user) {
@@ -449,6 +468,7 @@ function postButtonClick() {
 /*------------------------------------------------------------------------->  
   Event Listeners  
 <-------------------------------------------------------------------------*/
+populateUserInfo(currentUser);
 
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
@@ -456,3 +476,4 @@ listen('change', imgInput, handleImageSelect);
 listen('click', switchUserButton, () => switchUser(userTwo));
 
 listen('click', modalButton, () => populateUserInfo(currentUser));
+
