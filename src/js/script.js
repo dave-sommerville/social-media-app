@@ -78,7 +78,7 @@ const modalUserName = select('.username');
 const modalEmail = select('.email');
 const modalGroups = select('.groups');
 const modalPages = select('.pages');
-const modalButton = select('.header-profile');
+const modalButton = select('.modal-btn');
 const radioButtons = selectAll('input[name="option"]');
 
 
@@ -474,7 +474,9 @@ populateUserInfo(currentUser);
 
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
-
+listen('click', modalButton, () => {
+	profileModal.classList.toggle('slide');
+});
 
 radioButtons.forEach((radio) => {
   listen("change", radio, () => {

@@ -220,7 +220,7 @@ input[type="file"] {
 }
 
 /*------------------------------------------------------------------------->
-  Module
+  Modal
 <-------------------------------------------------------------------------*/
 
 .profile-modal {
@@ -233,6 +233,7 @@ input[type="file"] {
 	left: 0;
 	padding: 20px;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+	transition: all 0.5s ease;
 
 	label {
 		font-size: var(--app-text-size);
@@ -250,6 +251,14 @@ input[type="file"] {
 		width: 200px;
 		margin: 5px auto;
 	}
+}
+
+.profile-modal.slide {
+		transform: translateX(-350px); 
+}
+
+.modal-btn-wrapper{
+	justify-content: right;
 }
 
 .username {
