@@ -1,11 +1,11 @@
 /*
 
 - Fix Navbar styling / function
-- Add slideout animation
-- Radio Buttons for users 
-- Find Apropriate imgs 
+	- Add slideout animation
+	- List and font style
+	- User selection control
 - Work on general colour palette
-- Media Queries/responsiveness 
+- Responsiveness 
 */
 /*------------------------------------------------------------------------->
   Default Control and Roots 
@@ -310,3 +310,18 @@ ul li {
 .followed-pages a:hover {
 	text-decoration: underline;
 }
+
+.radio-group input[type="radio"] {
+  appearance: auto;
+  margin-right: 10px;
+}
+
+.radio-group label {
+  font-size: 1.4rem;
+  color: var(--app-text-color);
+  display: flex;
+	border: solid 1px #fff;
+  align-items: center;
+  margin-bottom: 10px;
+}
+

@@ -1,7 +1,5 @@
 'use strict';
-//	Switching is currently changing for all posts
-//	Images need to be fixed
-//	Switch button to be made into a radio button inside nav
+//	Floating Nav bar styling 
 //	Hamburger icon for responsive design
 
 
@@ -11,6 +9,11 @@
 
 function select(selector, scope = document) {
   return scope.querySelector(selector);
+}
+
+
+function selectAll(selector, scope = document) {
+  return scope.querySelectorAll(selector);
 }
 
 function listen(event, element, callback) {
@@ -76,7 +79,8 @@ const modalEmail = select('.email');
 const modalGroups = select('.groups');
 const modalPages = select('.pages');
 const modalButton = select('.header-profile');
-const switchUserButton = select('.switch-user-btn'); // Switch user button
+const radioButtons = selectAll('input[name="option"]');
+
 
 const postsDatabase = [];
 let uploadedImage = null;
@@ -234,12 +238,12 @@ class Post {
   #p;
   #img;
   #date;
-  #user; //To track each users posts 
+  #user; 
 
   constructor(user, p, img) {
     if (!(user instanceof User)) {
       throw new Error('The user must be an instance of User.');
-    } // To ensure we are using a User object
+    } 
     this.#user = user;
     this.setPostId();
     this.setP(p);
@@ -353,8 +357,7 @@ function populateUserInfo(user) {
   modalUserName.textContent = user.getUserName();
   modalEmail.textContent = user.getEmail();
 
-  // Populate Groups as a list
-  modalGroups.innerHTML = ''; // Clear any previous content
+  modalGroups.innerHTML = ''; 
   const groupsList = document.createElement('ul');
   user.getGroups().forEach((group) => {
     const li = document.createElement('li');
@@ -363,8 +366,7 @@ function populateUserInfo(user) {
   });
   modalGroups.appendChild(groupsList);
 
-  // Populate Pages as a list
-  modalPages.innerHTML = ''; // Clear any previous content
+  modalPages.innerHTML = ''; 
   const pagesList = document.createElement('ul');
   user.getPages().forEach((page) => {
     const li = document.createElement('li');
@@ -413,7 +415,7 @@ function createPost(userObj, postObj) {
   let post = create('div');
   addClass(post, 'post-wrapper');
 
-  let postHeading = createHeading(userObj); // Pass the correct user for the header
+  let postHeading = createHeading(userObj); 
   post.appendChild(postHeading);
 
   let content = create('p');
@@ -433,7 +435,7 @@ function createPost(userObj, postObj) {
 function renderPosts() {
   newsfeed.innerHTML = '';
   postsDatabase.sort((a, b) => b.getDate() - a.getDate());
-  postsDatabase.forEach((post) => createPost(post.getUser(), post)); // Use the user who created the post
+  postsDatabase.forEach((post) => createPost(post.getUser(), post)); 
 }
 
 
@@ -473,7 +475,24 @@ populateUserInfo(currentUser);
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
 
-listen('click', switchUserButton, () => switchUser(userTwo));
 
-listen('click', modalButton, () => populateUserInfo(currentUser));
-
+radioButtons.forEach((radio) => {
+  listen("change", radio, () => {
+    switch (radio.value) {
+      case "1":
+        switchUser(userOne);
+				console.log(`Switching to user ${radio.value}`);
+        break;
+      case "2":
+        switchUser(userTwo);
+				console.log(`Switching to user ${radio.value}`);
+        break;
+      case "3":
+        switchUser(userThree);
+				console.log(`Switching to user ${radio.value}`);
+        break;
+      default:
+        switchUser(userOne);
+    }
+  });
+});
