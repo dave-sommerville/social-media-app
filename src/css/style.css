@@ -86,7 +86,8 @@ main {
 
 h1 {
   font-size: 2.5rem;	
-	color: var(--app-text-color);									
+	color: var(--app-text-color);			
+	text-align: center;						
 }
 
 h2 {
@@ -260,9 +261,6 @@ input[type="file"] {
 	line-height: 50px;
 }
 
-.can-monetize {
-	font-size: var(--app-text-size);
-}
 .user-info {
   margin-top: 10px;
 }
@@ -278,6 +276,7 @@ label {
 
 ul li {
 	color: var(--app-text-color);
+	font-size: 1.6rem;
   padding-left: 1rem;
   position: relative;
 }
@@ -305,6 +304,10 @@ ul li {
 	font-size: 1rem;
 	color: #bdc3c7;
 	margin: 5px 0;
+}
+
+.username:hover {
+	text-decoration: underline;
 }
 
 .email {

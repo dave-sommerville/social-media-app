@@ -319,11 +319,11 @@ function handleImageSelect(ev) {
 const userOne = new Subscriber(
   new User(
     'AB1234',
-    'Dave',
-    'Sommerville',
-    '@thatdaveguy22',
-    'dave.r.sommerville@outlook.com',
-    './src/img/profile-01.png'
+    'William',
+    'Mackel',
+    '@billythesquid',
+    'billythesquid@netescape.com',
+    './src/img/billy.png'
   ),
   ['Tech', 'Gaming'],  
   ['MyPage1', 'MyPage2'],  
@@ -333,11 +333,25 @@ const userOne = new Subscriber(
 const userTwo = new Subscriber(
   new User(
     'CD5678',
-    'Jane',
-    'Doe',
-    '@janedoe',
-    'jane.doe@domain.com',
-    './src/img/profile-02.png'
+    'Greyson',
+    'Xenobi',
+    '@greyOne',
+    'greysonX@jupiter.gal',
+    './src/img/greyson.png'
+  ),
+  ['Art', 'Music'],   
+  ['MyPageA', 'MyPageB'],  
+  false  
+);
+
+const userThree = new Subscriber(
+  new User(
+    'EF9123',
+    'Eyegore',
+    'Field',
+    '@eyeSpy',
+    'Eyegore2020@underthebed.com',
+    './src/img/eyegore.png'
   ),
   ['Art', 'Music'],   
   ['MyPageA', 'MyPageB'],  
