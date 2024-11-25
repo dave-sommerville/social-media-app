@@ -75,7 +75,6 @@ const modalUserName = select('.username');
 const modalEmail = select('.email');
 const modalGroups = select('.groups');
 const modalPages = select('.pages');
-const modalCanMonetize = select('.can-monetize');
 const modalButton = select('.header-profile');
 const switchUserButton = select('.switch-user-btn'); // Switch user button
 
@@ -173,9 +172,8 @@ class User {
 class Subscriber extends User {
   #groups;
   #pages;
-  #canMonetize;
 
-  constructor(user, groups, pages, canMonetize) {
+  constructor(user, groups, pages) {
     if (!(user instanceof User)) {
       throw new Error('The provided user must be an instance of User.');
     }
@@ -190,7 +188,6 @@ class Subscriber extends User {
 
     this.setGroups(groups);
     this.setPages(pages);
-    this.setCanMonetize(canMonetize);
   }
 
   setGroups(groups) {
@@ -211,30 +208,20 @@ class Subscriber extends User {
     }
     this.#pages = pages;
   }
-  setCanMonetize(canMonetize) {
-    if (typeof canMonetize !== 'boolean') {
-      throw new Error('Can monetize must be a boolean value.');
-    }
-    this.#canMonetize = canMonetize;
-  }
-
   getGroups() {
     return this.#groups;
   }
   getPages() {
     return this.#pages;
   }
-  getCanMonetize() {
-    return this.#canMonetize;
-  }
-  getInfo() {
+
+	getInfo() {
     return {
       fullName: this.getFullName(),
       userName: this.getUserName(),
       email: this.getEmail(),
       groups: this.getGroups(),
       pages: this.getPages(),
-      canMonetize: this.getCanMonetize(),
     };
   }
 }
@@ -327,7 +314,6 @@ const userOne = new Subscriber(
   ),
   ['Tech', 'Gaming'],  
   ['MyPage1', 'MyPage2'],  
-  true 
 );
 
 const userTwo = new Subscriber(
@@ -341,7 +327,6 @@ const userTwo = new Subscriber(
   ),
   ['Art', 'Music'],   
   ['MyPageA', 'MyPageB'],  
-  false  
 );
 
 const userThree = new Subscriber(
@@ -355,7 +340,6 @@ const userThree = new Subscriber(
   ),
   ['Art', 'Music'],   
   ['MyPageA', 'MyPageB'],  
-  false  
 );
 
 let currentUser = userOne;
@@ -370,7 +354,6 @@ function populateUserInfo(user) {
   modalEmail.textContent = user.getEmail();
   modalGroups.textContent = user.getGroups().join(', ');
   modalPages.textContent = user.getPages().join(', ');
-  modalCanMonetize.textContent = user.getCanMonetize() ? 'Yes' : 'No';
 	avatarModal.src = user.getProfilePic();
 }
 
@@ -410,7 +393,8 @@ function createHeading(userObj) {
 function createPost(userObj, postObj) {
   let post = create('div');
   addClass(post, 'post-wrapper');
-  let postHeading = createHeading(userObj);
+
+  let postHeading = createHeading(userObj); // Pass the correct user for the header
   post.appendChild(postHeading);
 
   let content = create('p');
@@ -425,12 +409,14 @@ function createPost(userObj, postObj) {
   newsfeed.appendChild(post);
 }
 
+
 //	POST RENDERING (FROM ARRAY)
 function renderPosts() {
   newsfeed.innerHTML = '';
   postsDatabase.sort((a, b) => b.getDate() - a.getDate());
-  postsDatabase.forEach((post) => createPost(currentUser, post)); // Pass currentUser
+  postsDatabase.forEach((post) => createPost(post.getUser(), post)); // Use the user who created the post
 }
+
 
 //	CREATE FUNCTIONS TRIGGER SET
 function postButtonClick() {
