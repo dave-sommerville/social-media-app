@@ -79,6 +79,7 @@ const modalEmail = select('.email');
 const modalGroups = select('.groups');
 const modalPages = select('.pages');
 const modalButton = select('.modal-btn');
+const eyeIcon = select('.eye');
 const radioButtons = selectAll('input[name="option"]');
 
 
@@ -474,8 +475,11 @@ populateUserInfo(currentUser);
 
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
+
 listen('click', modalButton, () => {
 	profileModal.classList.toggle('slide');
+	eyeIcon.classList.toggle('fa-eye');
+	eyeIcon.classList.toggle('fa-eye-slash');
 });
 
 radioButtons.forEach((radio) => {

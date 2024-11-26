@@ -1,9 +1,5 @@
 /*
-
-- Fix Navbar styling / function
-	- Add slideout animation
-	- List and font style
-	- User selection control
+- CSS/js Organization
 - Work on general colour palette
 - Responsiveness 
 */
@@ -113,7 +109,7 @@ main {
 
 h1 {
   font-size: 2.5rem;	
-	color: #2c3e50;			
+	color: var(--app-text-color);			
 	text-align: center;						
 }
 
@@ -175,7 +171,7 @@ p {
 .input-display {
 	color: var(--app-text-color);
 }
-button {
+.post-btn {
 	font-size: 1.2rem;
   width: 80px;
   height: 35px;
@@ -204,7 +200,7 @@ input[type="file"] {
 	height: fit-content;
   background-color: var(--app-secondary-color);
   padding: 25px;
-  margin: 25px 0;
+  margin: 25px ;
   border-radius: var(--app-border-rad);
 }
 
@@ -282,10 +278,19 @@ input[type="file"] {
 
 .profile-modal.slide {
 		transform: translateX(-350px); 
+
+		.email {
+			color: #2c3e50;
+		}
 }
 
 .modal-btn-wrapper{
 	justify-content: right;
+}
+
+.eye {
+	font-size: 2.5rem;
+	color: var(--app-text-color);
 }
 
 .username {
