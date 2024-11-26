@@ -65,6 +65,10 @@ Needing to consider how to arrange and activate the different theme preferences
 	display: none;
 }
 
+.circle {
+	border-radius: 50%;
+}
+
 /*------------------------------------------------------------------------->
   Base Structure
 <-------------------------------------------------------------------------*/
@@ -285,7 +289,7 @@ label {
 
 ul li {
 	color: var(--app-text-color);
-	font-size: 1.6rem;
+	font-size: 1.2rem;
   padding-left: 1rem;
   position: relative;
 }
@@ -307,9 +311,9 @@ ul li {
 }
 
 .email {
-	color: #3498db;
+	color: var(--app-text-color);
 	text-decoration: none;
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 }
 
 .email:hover {
@@ -320,17 +324,43 @@ ul li {
 	text-decoration: underline;
 }
 
+.radio-group {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	margin-top: 20px;
+}
+
 .radio-group input[type="radio"] {
-  appearance: auto;
-  margin-right: 10px;
+  display: none; 
 }
 
 .radio-group label {
   font-size: 1.4rem;
   color: var(--app-text-color);
   display: flex;
-	border: solid 1px #fff;
   align-items: center;
   margin-bottom: 10px;
 }
 
+.mini-profile {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+	cursor: pointer;
+}
+
+.one {
+	background: #fff url(../img/billy.png) no-repeat center center;
+	background-size: cover;
+}
+.two {
+	background: #fff url(../img/greyson.png) no-repeat center center;
+	background-size: cover;
+}
+.three {
+	background: #fff url(../img/eyegore.png) no-repeat center center;
+	background-size: cover;
+}
