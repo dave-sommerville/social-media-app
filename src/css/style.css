@@ -158,6 +158,7 @@ p {
 
 .btn-wrapper {
   justify-content: space-between;
+	align-items: center;
   margin: 20px 50px 10px 50px;
 
 	i {
@@ -185,6 +186,47 @@ p {
 input[type="file"] {
   display: none;
 }  
+
+
+.radio-group {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+}
+
+.radio-group input[type="radio"] {
+  display: none; 
+}
+
+.radio-group label {
+  font-size: 1.4rem;
+  color: var(--app-text-color);
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mini-profile {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+	cursor: pointer;
+}
+
+.one {
+	background: #fff url(../img/billy.png) no-repeat center center;
+	background-size: cover;
+}
+.two {
+	background: #fff url(../img/greyson.png) no-repeat center center;
+	background-size: cover;
+}
+.three {
+	background: #fff url(../img/eyegore.png) no-repeat center center;
+	background-size: cover;
+}
 
 /*------------------------------------------------------------------------->
   Newsfeed
@@ -350,45 +392,4 @@ ul li {
 
 .followed-pages a:hover {
 	text-decoration: underline;
-}
-
-.radio-group {
-	display: flex;
-	gap: 20px;
-	justify-content: center;
-	margin-top: 20px;
-}
-
-.radio-group input[type="radio"] {
-  display: none; 
-}
-
-.radio-group label {
-  font-size: 1.4rem;
-  color: var(--app-text-color);
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.mini-profile {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-	cursor: pointer;
-}
-
-.one {
-	background: #fff url(../img/billy.png) no-repeat center center;
-	background-size: cover;
-}
-.two {
-	background: #fff url(../img/greyson.png) no-repeat center center;
-	background-size: cover;
-}
-.three {
-	background: #fff url(../img/eyegore.png) no-repeat center center;
-	background-size: cover;
 }
