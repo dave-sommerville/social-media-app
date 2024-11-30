@@ -238,11 +238,11 @@ input[type="file"] {
 }
 
 .post-wrapper {
-	width: 800px;
+	width: 100%;
 	height: fit-content;
   background-color: var(--app-secondary-color);
   padding: 25px;
-  margin: 25px ;
+  margin-bottom: 25px;
   border-radius: var(--app-border-rad);
 }
 
