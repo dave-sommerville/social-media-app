@@ -18,37 +18,15 @@
 </head>
 <body>
   <header>
-<!--	Will use in responsive version	-->
+		<section class="banner container flex">
 			<h1>Me, Myself, and Eye</h1>
+			<button type="button" class="modal-btn">
+				<i class=" eye fa-solid fa-eye"></i>
+			</button>
+		</section>
   </header>
   <main class="container flex f-col">
-
-		<section class="profile-modal slide flex f-col">
-			<div class="flex modal-btn-wrapper">
-				<button type="button" class="modal-btn">
-					<i class=" eye fa-solid fa-eye"></i>
-				</button>
-			</div>
-			<img class="profile-pic" 
-			src="" 
-			alt="Profile Img">
-			<h2 class="name"></h2>
-			<p class="username"></p>
-			</p>
-				<div class="info-item">
-					<label>Email:</label>
-					<span class="email"></span>
-				</div>
-				<div class="info-item">
-					<label>Groups Enrolled In:</label>
-					<ul class="groups">
-					</ul>
-				</div>
-				<div class="info-item">
-					<label>Pages Subscribed To:</label>
-					<ul class="pages">
-					</ul>
-				</div>	
+		<section class="modal-wrapper flex">
 		</section>
     <section class="user-input">
       <form class="flex">
@@ -83,5 +61,30 @@
     <section class="newsfeed">
     </section>
   </main>
+	<footer class="flex">
+		<div class="profile-modal flex f-col">
+			<img 
+				class="profile-pic" 
+				src="" 
+				alt="Profile Img"
+			>
+			<h2 class="name"></h2>
+			<p class="username"></p>
+			<div class="info-item">
+				<label>Email:</label>
+				<span class="email"></span>
+			</div>
+			<div class="info-item">
+				<label>Groups Enrolled In:</label>
+				<ul class="groups">
+				</ul>
+			</div>
+			<div class="info-item">
+				<label>Pages Subscribed To:</label>
+				<ul class="pages">
+				</ul>
+			</div>	
+		</div>
+	</footer>
 </body>
 </html>

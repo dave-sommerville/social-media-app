@@ -1,8 +1,4 @@
 'use strict';
-//	Floating Nav bar styling 
-//	Hamburger icon for responsive design
-
-
 /*------------------------------------------------------------------------->  
   Utility Functions  
 <-------------------------------------------------------------------------*/

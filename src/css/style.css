@@ -1,7 +1,11 @@
 /*
+- Adding live server / cookies 
 - CSS/js Organization
 - Work on general colour palette
-- Responsiveness 
+- Adjust icon sizes 
+- Add logo and favicon
+- Add the monsters' groups and pages 
+
 */
 /*------------------------------------------------------------------------->
   Default Control and Roots 
@@ -98,7 +102,6 @@ Fitness-Minded Monster
 */
 main {
   max-width: var(--app-section-width);
-  position: relative;
   align-items: center;
   justify-content: center;
 }
@@ -110,7 +113,6 @@ main {
 h1 {
   font-size: 2.5rem;	
 	color: var(--app-text-color);			
-	text-align: center;						
 }
 
 h2 {
@@ -125,9 +127,21 @@ p {
 }
 
 /*------------------------------------------------------------------------->
-  Header	-		Will be removed in lieu of sidebar 
-	-- Except for mobile, which will have a header w/ hamburger icon
+  Header	
 <-------------------------------------------------------------------------*/
+
+header {
+	height: 100px;
+	width: 100%;
+	background-color: var(--app-primary-color);
+	justify-content: space-between;
+}
+
+ .banner {
+	height: 100px;
+	line-height: 100px;
+	justify-content: space-between;
+} 
 
 /*------------------------------------------------------------------------->
   User Input
@@ -139,6 +153,7 @@ p {
   border-radius: var(--app-border-rad);
   background-color: var(--app-bg-color);
 	margin-top: 25px;
+	z-index: 0;
 }
 
 .input-text {
@@ -235,6 +250,7 @@ input[type="file"] {
 .newsfeed {
 	width: 100%;
   margin-top: 25px;
+	z-index: 0;
 }
 
 .post-wrapper {
@@ -288,14 +304,19 @@ input[type="file"] {
   Modal
 <-------------------------------------------------------------------------*/
 
+footer {
+	justify-content: center;
+	align-items: center;
+}
+
 .profile-modal {
 	width: 450px;
-	height: 100vh;
+	height: fit-content;
 	background-color: #2c3e50;
   padding: 20px;
 	position: fixed;
-	top: 0;
-	left: 0;
+	z-index: 800;
+	margin: auto;
 	padding: 20px;
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 	transition: all 0.5s ease;
@@ -318,17 +339,14 @@ input[type="file"] {
 	}
 }
 
+
+
 .profile-modal.slide {
-		transform: translateX(-350px); 
-
-		.email {
-			color: #2c3e50;
-		}
+	transform: translateY(-50svh); 
+	opacity: 0;
+	visibility: hidden;
 }
 
-.modal-btn-wrapper{
-	justify-content: right;
-}
 
 .eye {
 	font-size: 2.5rem;
