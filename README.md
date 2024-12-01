@@ -7,6 +7,8 @@ This is bar far my most ambitious web development project so far. It's also been
 - Images are selected from user's documents
 - A pop up module uses getter functions to display the user (and subscriber) information
 
+![Website Preview](./src/img/scrnshot-preview.jpg)
+
 ## Badges
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
