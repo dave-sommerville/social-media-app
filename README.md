@@ -1,8 +1,9 @@
 
-# FAKEBOOK: My first social media site
-This is bar far my most ambitious web development project so far. It's also been the most fun. I've had to work through numerous challenges, but a great deal of my time on this project was spent developing structure. The project originally called for the classes of User and Subscriber, I decided to create the class Post as well. I think this will help me with some future planned adjustments. I see that class creation is no joke, however. As it takes up more than half my js. I also chose to use getter and setter methods instead of the get and set keywords simply to help myself stay organized. I also got to discover the joy (and anguish) of debugging repeatedly, which in itself is good practice. 
+# Me, Myself, and I: Echo Chamber Project 
+At its beginning, this project was one of the most ambitious projects. I've had to work through numerous challenges, but a great deal of my time on this project was spent developing structure. I have a User class, extended by a Subscriber class, as well as a Post class. This grants excellent control over the posts generated and tracking them over time. It has evolved into a themed project. Allow 
 ## Features
 - User generated posts
+- User can be changed with posts in their name. 
 - Text and/or images can be posted
 - Images are selected from user's documents
 - A pop up module uses getter functions to display the user (and subscriber) information
@@ -13,8 +14,7 @@ This is bar far my most ambitious web development project so far. It's also been
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square)
+
 ## Planned Features and Fixes
 - Adapting local storage to maintain on user's local system
-- Allow user to edit their information (including profile pic) 
-- Edit general layout
 - Create theme chooser 
