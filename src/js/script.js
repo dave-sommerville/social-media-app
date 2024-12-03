@@ -314,8 +314,15 @@ const userOne = new Subscriber(
     'billythesquid@netescape.com',
     './src/img/billy.png'
   ),
-  ['Tech', 'Gaming'],  
-  ['MyPage1', 'MyPage2'],  
+  [
+		'School', 
+		'Sushi Survivors Group'
+	],  
+  [
+		'Modern Monster', 
+		'Snacks and Cracks', 
+		'Deep Thoughts'
+	],  
 );
 
 const userTwo = new Subscriber(
@@ -327,8 +334,15 @@ const userTwo = new Subscriber(
     'greysonX@jupiter.gal',
     './src/img/greyson.png'
   ),
-  ['Art', 'Music'],   
-  ['MyPageA', 'MyPageB'],  
+  [
+		'Going Home CB Radio', 
+		'Spacecraft Cadets'
+	],   
+  [
+		'I Want to Believe', 
+		'Probes USA', 
+		'Zed Files'
+	],  
 );
 
 const userThree = new Subscriber(
@@ -340,8 +354,15 @@ const userThree = new Subscriber(
     'Eyegore2020@underthebed.com',
     './src/img/eyegore.png'
   ),
-  ['Art', 'Music'],   
-  ['MyPageA', 'MyPageB'],  
+  [
+		'Giggles and Growls Comedy Club', 
+		'Sheep Herding Night School', 
+		'2020 club'
+	],   
+  [
+		'What\'s the Drop', 
+		'2020'
+	],  
 );
 
 let currentUser = userOne;
