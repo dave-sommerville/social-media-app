@@ -35,6 +35,7 @@ Needing to consider how to arrange and activate the different theme preferences
 	--app-text-color: #fefefe;
 	--app-primary-color: #234;
 	--app-secondary-color: #357;
+	--app-logo-red: #924;
 	--app-input-bg: #96acc2;
 	--app-text-size: 1.4rem;
   --app-btn-color: #234;
@@ -99,7 +100,6 @@ h2 {
 	font-size: 2rem;
   color: var(--app-text-color);
 	text-align: center;
-
 }
 
 h3 {
@@ -107,8 +107,6 @@ h3 {
 	font-size: 5rem;
 	font-weight: 300;
 	letter-spacing: -19px;
-
-
 }
 
 .logo { 
@@ -148,9 +146,8 @@ p {
 .white {
 	color: #fff;
 }
-/* Gotta change the title dude */
-.blue {
-	color: #924;
+.red {
+	color: var(--app-logo-red);
 }
 
 /*------------------------------------------------------------------------->
@@ -244,7 +241,6 @@ header {
 input[type="file"] {
   display: none;
 }  
-
 
 .radio-group {
 	width: 250px;
