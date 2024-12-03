@@ -111,6 +111,7 @@ main {
 <-------------------------------------------------------------------------*/
 
 h1 {
+	font-family: "Ubuntu", sans-serif;	
   font-size: 2.5rem;	
 	color: var(--app-text-color);			
 }
@@ -133,12 +134,24 @@ h3 {
 }
 
 .logo { 
+	width: 200px;
 	align-items: center;
 	justify-content: center;
 	i {
 		margin-left: -8px;
 		font-size: 4rem;
 		transform: rotate(35deg);
+	}
+}
+
+.avatar-wrapper {
+	width: 200px;
+	height: 100px;
+	
+	img {
+		height: 80px;
+		width: 80px;
+		margin: 10px 0;
 	}
 }
 
