@@ -2,9 +2,7 @@
 - Adding live server / cookies 
 - CSS/js Organization
 - Work on general colour palette
-- Adjust icon sizes 
-- Add logo and favicon
-- Add the monsters' groups and pages 
+-	Button Design
 
 */
 /*------------------------------------------------------------------------->
@@ -77,29 +75,6 @@ body {
   background-color: var(--app-bg-color);
 }
 
-
-/*
-Food-Obsessed Monster
-"Monster Munchies Club" (a foodie group for sharing snacks)
-"World's Gooey Desserts"
-"Midnight Pizza Lovers"
-Adventurous Monster
-"Hide & Seek Champions League"
-"Spooky Caves Travel Guides"
-"Monster Obstacle Course Builders"
-Creative Monster
-"Doodle Monsters Art Club"
-"DIY Costume Creations"
-"Silly Sounds Symphony"
-Friendly and Social Monster
-"Hug-a-Monster Meetup"
-"Giggles and Growls Comedy Group"
-"Monsters Who Game Together"
-Fitness-Minded Monster
-"Swamp Aerobics with Slimey"
-"Fang Fit: Monster Workouts"
-"Tail Wag Yoga"
-*/
 main {
   max-width: var(--app-section-width);
   align-items: center;
@@ -122,7 +97,6 @@ h2 {
 	text-align: center;
 
 }
-
 
 h3 {
 	font-family: "Ubuntu", sans-serif;	
@@ -170,7 +144,7 @@ p {
 .white {
 	color: #fff;
 }
-
+/* Gotta change the title dude */
 .blue {
 	color: #924;
 }
@@ -186,13 +160,11 @@ header {
 	justify-content: space-between;
 }
 
- .banner {
+.banner {
 	height: 100px;
 	line-height: 100px;
 	justify-content: space-between;
 } 
-
-
 
 /*------------------------------------------------------------------------->
   User Input
@@ -223,9 +195,10 @@ header {
 }
 
 .btn-wrapper {
+	margin-top: 25px;
   justify-content: space-between;
 	align-items: center;
-  margin: 20px 50px 10px 50px;
+	position: relative;
 
 	i {
 		color: var(--app-btn-color);
@@ -240,14 +213,28 @@ header {
 }
 
 .post-btn {
-	font-size: 1.2rem;
-  width: 80px;
-  height: 35px;
+	font-size: 1.6rem;
+	font-weight: 500;
+  width: 120px;
+  height: 50px;
   line-height: 35px;
   text-align: center;
   border-radius: var(--app-border-rad);
   background-color: var(--app-btn-color);
   color: var(--app-text-color);
+}
+
+.image-icon {
+	width: 20px;
+	height: auto;
+	margin: 0 50px;
+}
+
+.input-display {
+	position: absolute;
+	bottom: -5px;
+	left: 3px;
+	font-size: 0.7rem;
 }
 
 input[type="file"] {
@@ -256,9 +243,9 @@ input[type="file"] {
 
 
 .radio-group {
+	width: 250px;
 	display: flex;
-	gap: 20px;
-	justify-content: center;
+	justify-content: space-between;
 }
 
 .radio-group input[type="radio"] {
@@ -266,11 +253,9 @@ input[type="file"] {
 }
 
 .radio-group label {
-  font-size: 1.4rem;
   color: var(--app-text-color);
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .mini-profile {
