@@ -67,6 +67,10 @@ Needing to consider how to arrange and activate the different theme preferences
 	border-radius: 50%;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 /*------------------------------------------------------------------------->
   Base Structure
 <-------------------------------------------------------------------------*/
@@ -264,7 +268,6 @@ input[type="file"] {
   display: flex;
   justify-content: center; 
   align-items: center; 
-	cursor: pointer;
 }
 
 .one {
@@ -431,9 +434,6 @@ ul li {
 	margin: 5px 0;
 }
 
-.username:hover {
-	text-decoration: underline;
-}
 
 .email {
 	color: var(--app-text-color);
