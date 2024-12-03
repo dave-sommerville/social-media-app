@@ -496,7 +496,7 @@ listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
 
 listen('click', miniAvatar, () => {
-	profileModal.classList.toggle('slide');
+	profileModal.classList.toggle('hidden');
 });
 
 radioButtons.forEach((radio) => {

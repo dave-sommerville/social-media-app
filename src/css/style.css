@@ -381,7 +381,7 @@ footer {
 
 
 
-.profile-modal.slide {
+.profile-modal.hidden {
 	transform: translateY(-50svh); 
 	opacity: 0;
 	visibility: hidden;
