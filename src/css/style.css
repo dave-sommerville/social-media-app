@@ -118,12 +118,48 @@ h1 {
 h2 {
 	font-size: 2rem;
   color: var(--app-text-color);
-	text-align: center;									
+	text-align: center;
+
+}
+
+
+h3 {
+	font-family: "Ubuntu", sans-serif;	
+	font-size: 5rem;
+	font-weight: 300;
+	letter-spacing: -19px;
+
+
+}
+
+.logo { 
+	align-items: center;
+	justify-content: center;
+	i {
+		margin-left: -8px;
+		font-size: 4rem;
+		transform: rotate(35deg);
+	}
+}
+
+.and {
+	justify-self: bottom;
+	font-size: 1rem;
+	margin-top: 40px;
+	margin-left: 14px;
 }
 
 p {
 	font-size: var(--app-text-size);
 	color: var(--app-text-color);
+}
+
+.white {
+	color: #fff;
+}
+
+.blue {
+	color: #924;
 }
 
 /*------------------------------------------------------------------------->
@@ -142,6 +178,8 @@ header {
 	line-height: 100px;
 	justify-content: space-between;
 } 
+
+
 
 /*------------------------------------------------------------------------->
   User Input
@@ -187,6 +225,7 @@ header {
 .input-display {
 	color: var(--app-text-color);
 }
+
 .post-btn {
 	font-size: 1.2rem;
   width: 80px;

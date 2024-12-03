@@ -42,7 +42,7 @@ function assignId(element) {
 function createImage(imageSrc) {
   const img = document.createElement('img');
   img.src = imageSrc;
-  img.alt = imageSrc; // Because the photo could be anything
+  img.alt = imageSrc; // To prevent user from choosing other files 
   return img;
 }
 
@@ -67,6 +67,7 @@ const newsfeed = select('.newsfeed');
 const postTextArea = select('.input-text');
 const imageInput = select('#image-input');
 const inputDisplay = select('.input-display');
+const miniAvatar = select('.mini-avatar');
 const profileModal = select('.profile-modal');
 const avatarModal = select('.profile-pic');
 const modalName = select('.name');
@@ -373,6 +374,7 @@ function populateUserInfo(user) {
   modalPages.appendChild(pagesList);
 
   avatarModal.src = user.getProfilePic();
+	miniAvatar.src = user.getProfilePic();
 }
 
 function switchUser(user) {
@@ -472,10 +474,8 @@ populateUserInfo(currentUser);
 listen('click', postButton, postButtonClick);
 listen('change', imgInput, handleImageSelect);
 
-listen('click', modalButton, () => {
+listen('click', miniAvatar, () => {
 	profileModal.classList.toggle('slide');
-	eyeIcon.classList.toggle('fa-eye');
-	eyeIcon.classList.toggle('fa-eye-slash');
 });
 
 radioButtons.forEach((radio) => {
