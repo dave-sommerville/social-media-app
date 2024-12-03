@@ -316,7 +316,9 @@ input[type="file"] {
 }
 
 .heading-wrapper {
+	width: 100%;
 	display: flex;
+	justify-content: space-between;
 	color: var(--app-text-color);
 
 	img {
@@ -327,14 +329,13 @@ input[type="file"] {
 	span {
 		font-size: var(--app-text-size);											
 		line-height: 30px;
-		margin: 0 5svw 0 10px; 
 		height: 30px;
 	}
 	p {
 		height: 30px;
 		line-height: 30px;
 		text-align: justify;
-		margin-left: 5px;
+		margin-left: 15px 0 0 15px;
 		flex: 1;
 		font-size: var(--app-text-size);									
 	}
