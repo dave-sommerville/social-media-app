@@ -31,13 +31,13 @@ Needing to consider how to arrange and activate the different theme preferences
 */
 
 :root {
-  --app-bg-color: #020209;
+  --app-bg-color: #80a0bf;
 	--app-text-color: #fefefe;
 	--app-primary-color: #234;
-	--app-secondary-color: #123;
-	--app-input-bg: #012;
+	--app-secondary-color: #357;
+	--app-input-bg: #96acc2;
 	--app-text-size: 1.4rem;
-  --app-btn-color: #d12;
+  --app-btn-color: #234;
   --app-border-rad: 6px;
 	--app-section-width: 800px;
 }
@@ -268,15 +268,15 @@ input[type="file"] {
 }
 
 .one {
-	background: #fff url(../img/billy.png) no-repeat center center;
+	background: var(--app-primary-color) url(../img/billy.png) no-repeat center center;
 	background-size: cover;
 }
 .two {
-	background: #fff url(../img/greyson.png) no-repeat center center;
+	background: var(--app-primary-color) url(../img/greyson.png) no-repeat center center;
 	background-size: cover;
 }
 .three {
-	background: #fff url(../img/eyegore.png) no-repeat center center;
+	background: var(--app-primary-color) url(../img/eyegore.png) no-repeat center center;
 	background-size: cover;
 }
 
@@ -349,7 +349,7 @@ footer {
 .profile-modal {
 	width: 450px;
 	height: fit-content;
-	background-color: #2c3e50;
+	background-color: var(--app-primary-color);
   padding: 20px;
 	position: fixed;
 	z-index: 800;
