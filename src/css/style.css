@@ -123,6 +123,7 @@ h3 {
 .avatar-wrapper {
 	width: 200px;
 	height: 100px;
+  justify-content: center;
 	
 	img {
 		height: 80px;
@@ -243,7 +244,8 @@ input[type="file"] {
 }  
 
 .radio-group {
-	width: 250px;
+	width: 30svw;
+  max-width: 250px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -444,4 +446,63 @@ ul li {
 
 .followed-pages a:hover {
 	text-decoration: underline;
+}
+
+@media (max-width: 880px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: -19px;
+  }
+  
+  .logo { 
+    width: 160px;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-left: -8px;
+      font-size: 3rem;
+      transform: rotate(35deg);
+    }
+  }
+
+  .avatar-wrapper img {
+    height: 60px;
+    width: 60px;
+  }
+
+  header {
+    height: 80px;
+  }
+  .banner {
+    height: 80px;
+    line-height: 80px;
+  }
+
+}
+
+@media (max-width: 680px) {
+  h1 {
+    display: none;
+  }
+  .avatar-wrapper {
+    justify-content: right;
+  }
+  .mini-profile {
+    width: 40px;
+    height: 40px;
+  }
+  .image-icon {
+    width: 15px;
+    margin: 0 30px;
+  }
+  .post-btn {
+    width: 90px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 }
